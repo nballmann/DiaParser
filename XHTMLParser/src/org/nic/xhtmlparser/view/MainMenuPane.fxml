@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.FlowPane?>
+
+<FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="600.0" prefWidth="400.0" styleClass="background" vgap="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.nic.xhtmlparser.controller.MainMenuController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Button disable="false" mnemonicParsing="false" onAction="#handleNewEntry" prefHeight="80.0" prefWidth="220.0" text="New Entry" textOverrun="ELLIPSIS" />
+    <Button mnemonicParsing="false" onAction="#handleStatistics" prefHeight="80.0" prefWidth="220.0" text="Statistics" />
+    <Button fx:id="diabetesNewsButton" mnemonicParsing="false" onAction="#handleDiabetesNews" prefHeight="80.0" prefWidth="220.0" text="Diabetes News" />
+    <Button mnemonicParsing="false" onAction="#handleOptions" prefHeight="80.0" prefWidth="220.0" text="Options" />
+    <Button mnemonicParsing="false" onAction="#handleExit" prefHeight="80.0" prefWidth="220.0" text="Exit" />
+  </children>
+  <stylesheets>
+    <URL value="@Theme.css" />
+  </stylesheets>
+</FlowPane>

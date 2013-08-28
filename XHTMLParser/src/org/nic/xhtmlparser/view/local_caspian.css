@@ -3525,26 +3525,26 @@ Only the properties with values that are different from the TextBox are specifie
 /* ----------------OWN Custom Styles----------------------------- */
 
 .pane-custom {
-	-fx-background-color: rgb(2,154,204);/*-fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;*/
+	-fx-background-color: rgb(95,171,233);/*-fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;*/
 	-fx-background-radius: 0;
 	/*-fx-background-insets: 0, 4 4 3 4,  5,  6,  7; */
 }
 
 .text-custom-title {
     -fx-font-smoothing-type: lcd;
-    -fx-font-size:12px ;
+    -fx-font-size:14px ;
     -fx-text-fill:white;
 }
 
 .text-custom-link {
     -fx-font-smoothing-type: lcd;
-    -fx-font-size:10px;
+    -fx-font-size:12px;
     -fx-text-fill:white;
 }
 
 .text-custom-teaser {
     -fx-font-smoothing-type: lcd;
-    -fx-font-size:10px;
+    -fx-font-size:12px;
     -fx-text-fill:white ;
 }
 

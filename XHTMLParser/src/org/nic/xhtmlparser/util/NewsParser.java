@@ -38,11 +38,11 @@ public final class NewsParser {
 
 				getNewsFeeds(doc.getChildNodes());
 
-//				for(NewsFeed newsFeed : newsFeedList) {
-//
-//					System.out.println(newsFeed.toString());
-//
-//				}
+				for(NewsFeed newsFeed : newsFeedList) {
+
+					System.out.println(newsFeed.toString());
+
+				}
 			}	
 
 		}

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-background-color 0xdfdfdfff?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.nic.xhtmlparser.controller.NewsFeedPaneController">
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.nic.xhtmlparser.controller.NewsFeedPaneController">
   <!-- TODO Add Nodes -->
   <children>
     <VBox id="VBox" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,10 +21,14 @@
               <children>
                 <Label fx:id="title1Text" styleClass="text-custom-title" text="" textAlignment="LEFT" wrapText="true">
                   <effect>
-                    <DropShadow spread="0.9206349206349206" />
+                    <DropShadow spread="0.9" fx:id="x7">
+                      <input>
+                        <Glow />
+                      </input>
+                    </DropShadow>
                   </effect>
                 </Label>
-                <Label fx:id="date1Text" styleClass="text-custom-link" text="" textAlignment="JUSTIFY" wrapText="true">
+                <Label fx:id="date1Text" styleClass="text-custom-link" text="" textAlignment="LEFT" wrapText="true">
                   <effect>
                     <Glow />
                   </effect>
@@ -32,11 +36,7 @@
                     <URL value="@local_caspian.css" />
                   </stylesheets>
                 </Label>
-                <Label fx:id="teaser1Text" styleClass="text-custom-teaser" text="" textAlignment="LEFT" wrapText="true">
-                  <effect>
-                    <DropShadow spread="0.9" />
-                  </effect>
-                </Label>
+                <Label fx:id="teaser1Text" effect="$x7" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true" />
               </children>
               <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x3" />
@@ -57,21 +57,21 @@
           <children>
             <VBox id="VBox" fx:id="feed2VBox" alignment="TOP_LEFT" layoutX="0.0" layoutY="0.0" maxHeight="362.0" maxWidth="390.0" padding="$x3" prefHeight="144.0" prefWidth="390.0" spacing="5.0">
               <children>
-                <Label fx:id="title2Text" styleClass="text-custom-title" text="" textAlignment="JUSTIFY" wrapText="true">
+                <Label fx:id="title2Text" styleClass="text-custom-title" text="" textAlignment="LEFT" wrapText="true">
                   <effect>
-                    <DropShadow spread="0.9444444444444444" />
+                    <DropShadow spread="0.9" fx:id="x8">
+                      <input>
+                        <Glow />
+                      </input>
+                    </DropShadow>
                   </effect>
                 </Label>
-                <Label id="link2Text" fx:id="date2Text" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true">
+                <Label id="link2Text" fx:id="date2Text" styleClass="text-custom-teaser" text="" textAlignment="LEFT" wrapText="true">
                   <effect>
                     <Glow />
                   </effect>
                 </Label>
-                <Label fx:id="teaser2Text" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true">
-                  <effect>
-                    <DropShadow spread="0.9" />
-                  </effect>
-                </Label>
+                <Label fx:id="teaser2Text" effect="$x8" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true" />
               </children>
             </VBox>
           </children>
@@ -89,21 +89,21 @@
           <children>
             <VBox id="VBox" fx:id="feed3VBox" alignment="TOP_LEFT" layoutX="0.0" layoutY="0.0" maxHeight="144.0" maxWidth="390.0" padding="$x3" prefHeight="144.0" prefWidth="390.0" spacing="5.0">
               <children>
-                <Label fx:id="title3Text" styleClass="text-custom-title" text="" textAlignment="JUSTIFY" wrapText="true">
+                <Label fx:id="title3Text" styleClass="text-custom-title" text="" textAlignment="LEFT" wrapText="true">
                   <effect>
-                    <DropShadow spread="0.9603174603174603" />
+                    <DropShadow spread="0.9" fx:id="x5">
+                      <input>
+                        <Glow />
+                      </input>
+                    </DropShadow>
                   </effect>
                 </Label>
-                <Label id="link3Text" fx:id="date3Text" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true">
+                <Label id="link3Text" fx:id="date3Text" styleClass="text-custom-teaser" text="" textAlignment="LEFT" wrapText="true">
                   <effect>
                     <Glow />
                   </effect>
                 </Label>
-                <Label fx:id="teaser3Text" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true">
-                  <effect>
-                    <DropShadow spread="0.9" />
-                  </effect>
-                </Label>
+                <Label fx:id="teaser3Text" effect="$x5" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true" />
               </children>
             </VBox>
           </children>
@@ -117,19 +117,19 @@
               <children>
                 <Label fx:id="title4Text" styleClass="text-custom-title" text="" textAlignment="LEFT" wrapText="true">
                   <effect>
-                    <DropShadow blurType="GAUSSIAN" radius="10.50595238095238" spread="0.9761904761904763" width="23.023809523809522" />
+                    <DropShadow spread="0.9" fx:id="x6">
+                      <input>
+                        <Glow />
+                      </input>
+                    </DropShadow>
                   </effect>
                 </Label>
-                <Label fx:id="link4Text" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true">
+                <Label id="link4Text" fx:id="date4Text" styleClass="text-custom-teaser" text="" textAlignment="LEFT" wrapText="true">
                   <effect>
                     <Glow />
                   </effect>
                 </Label>
-                <Label fx:id="teaser4Text" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true">
-                  <effect>
-                    <DropShadow spread="0.9" />
-                  </effect>
-                </Label>
+                <Label fx:id="teaser4Text" effect="$x6" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true" />
               </children>
             </VBox>
           </children>

@@ -41,7 +41,7 @@ public class NewsFeedPaneController implements ControllerInterface {
 	}
 	
 	@FXML
-	public void intitialize() {
+	public void initialize() {
 		
 	
 	}
@@ -64,9 +64,7 @@ public class NewsFeedPaneController implements ControllerInterface {
 
 			title4Text.setText(newsFeeds.get(3).getTitle());
 			date4Text.setText(newsFeeds.get(3).getDate());
-			System.out.println(newsFeeds.get(3).getDate());
 			teaser4Text.setText(newsFeeds.get(3).getDescription());
-			
 		
 		}
 		
