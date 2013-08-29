@@ -2,6 +2,10 @@
     -fx-background-color: rgb(95,171,233);
 }
 
+.background-dark {
+    -fx-background-color: rgb(31,136,222);
+}
+
 .label {
     -fx-font-size: 16pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -123,3 +127,39 @@
     -fx-stroke-width: 0;
 }
 
+.menu-bar {
+	-fx-background-color:#e2e2e2;
+	-fx-border-color: white;
+	-fx-border-width: 0,0,2,0;
+	
+}
+
+.table-view {
+	
+	-fx-background-color:rgb(95,171,233);
+	-fx-table-header-border-color: rgb(95,171,233);
+	
+	
+}
+.table-view .column-header {
+	
+	-fx-border-style: solid  ;
+    -fx-border-color: white;
+    -fx-border-insets: 0 1 1 0, 0 0 0 0;
+    -fx-border-width: 0,0,2,0;
+	
+	
+}
+
+.column-header-background {
+	
+	-fx-background-color:rgb(95,171,233);
+
+}
+
+.nested-column-header {
+	
+	-fx-background-color:rgb(95,171,233);
+
+	
+}

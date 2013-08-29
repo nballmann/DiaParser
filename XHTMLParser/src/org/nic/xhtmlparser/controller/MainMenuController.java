@@ -47,7 +47,7 @@ public class MainMenuController implements ControllerInterface {
 	@FXML
 	private void handleNewEntry() {
 		
-		
+		mainController.setActualView("CalendarPane");
 		
 	}
 	

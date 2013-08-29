@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="626.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.nic.xhtmlparser.controller.MainViewController">
+<BorderPane prefHeight="626.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.nic.xhtmlparser.controller.MainViewController">
   <!-- TODO Add Nodes -->
   <center>
     <StackPane fx:id="mainStackPane" prefHeight="600.0" prefWidth="400.0" />
@@ -26,6 +27,9 @@
           </items>
         </Menu>
       </menus>
+      <stylesheets>
+        <URL value="@Theme.css" />
+      </stylesheets>
     </MenuBar>
   </top>
 </BorderPane>

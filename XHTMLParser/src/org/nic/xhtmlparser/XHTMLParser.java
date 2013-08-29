@@ -16,6 +16,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import org.nic.xhtmlparser.controller.CalendarController;
 import org.nic.xhtmlparser.controller.MainMenuController;
 import org.nic.xhtmlparser.controller.MainViewController;
 import org.nic.xhtmlparser.controller.NewsFeedPaneController;
@@ -31,6 +32,7 @@ public class XHTMLParser extends Application {
 	private MainViewController mainViewController;
 	private NewsFeedPaneController newsFeedController;
 	private MainMenuController mainMenuController;
+	private CalendarController calendarController;
 
 	
 	@Override
@@ -67,6 +69,7 @@ public class XHTMLParser extends Application {
 			primaryStage.setResizable(false);
 			primaryStage.show();
 			
+			initNewEntryPane();
 			initNewsFeedPane();
 			
 		} catch (IOException e) {
@@ -139,7 +142,21 @@ public class XHTMLParser extends Application {
 	
 	public void initNewEntryPane() {
 		
-		// TODO implement PaneLoader
+		try {
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/CalendarView.fxml"));
+			FlowPane fPane = (FlowPane) loader.load();
+			
+			calendarController = loader.getController();
+			calendarController.setMainView(this);
+			
+			mainViewController.addScreen("CalendarPane", fPane);
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 	
