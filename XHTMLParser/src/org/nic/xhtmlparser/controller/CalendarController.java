@@ -1,19 +1,22 @@
 package org.nic.xhtmlparser.controller;
 
-import java.awt.event.WindowEvent;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
-import org.nic.xhtmlparser.XHTMLParser;
-import org.nic.xhtmlparser.model.DateCell;
-import org.nic.xhtmlparser.util.ControllerInterface;
-
+import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import org.nic.xhtmlparser.XHTMLParser;
+import org.nic.xhtmlparser.model.WeekCellData;
+import org.nic.xhtmlparser.util.CalendarUtil;
+import org.nic.xhtmlparser.util.ControllerInterface;
 
 public class CalendarController implements ControllerInterface {
 	
@@ -22,41 +25,58 @@ public class CalendarController implements ControllerInterface {
 	
 	private enum WeekDays {
 		
-		SU, MO, TU, WE, TH, FR, SA
+		MO, TU, WE, TH, FR, SA, SU
 		
 	}
 	
 	private ObjectProperty<Calendar> calendarProperty = new SimpleObjectProperty<Calendar>();
 	private ObjectProperty<Locale> localeProperty = new SimpleObjectProperty<Locale>();
-		
 	
+	private ObservableList<WeekCellData> cellDataList = FXCollections.observableArrayList();
+		
+	@FXML TableView<WeekCellData> calendarTableView;
 	@FXML
-	private TableColumn<DateCell, Integer> moTableColumn;
+	private TableColumn<WeekCellData, Integer> moTableColumn;
 	@FXML
-	private TableColumn<DateCell, Integer> tuTableColumn;
+	private TableColumn<WeekCellData, Integer> tuTableColumn;
 	@FXML
-	private TableColumn<DateCell, Integer> weTableColumn;
+	private TableColumn<WeekCellData, Integer> weTableColumn;
 	@FXML
-	private TableColumn<DateCell, Integer> thTableColumn;
+	private TableColumn<WeekCellData, Integer> thTableColumn;
 	@FXML
-	private TableColumn<DateCell, Integer> frTableColumn;
+	private TableColumn<WeekCellData, Integer> frTableColumn;
 	@FXML
-	private TableColumn<DateCell, Integer> saTableColumn;
+	private TableColumn<WeekCellData, Integer> saTableColumn;
 	@FXML
-	private TableColumn<DateCell, Integer> suTableColumn;
+	private TableColumn<WeekCellData, Integer> suTableColumn;
 	
 	public CalendarController() {
 		
-//		moTableColumn.setCellValueFactory(new PropertyValueFactory<DateCell, Integer>("dayOfMonth"));
-//		tuTableColumn.setCellValueFactory(new PropertyValueFactory<DateCell, Integer>("dayOfMonth"));
-//		weTableColumn.setCellValueFactory(new PropertyValueFactory<DateCell, Integer>("dayOfMonth"));
-//		thTableColumn.setCellValueFactory(new PropertyValueFactory<DateCell, Integer>("dayOfMonth"));
-//		frTableColumn.setCellValueFactory(new PropertyValueFactory<DateCell, Integer>("dayOfMonth"));
-//		saTableColumn.setCellValueFactory(new PropertyValueFactory<DateCell, Integer>("dayOfMonth"));
-//		suTableColumn.setCellValueFactory(new PropertyValueFactory<DateCell, Integer>("dayOfMonth"));
+		localeProperty.set(Locale.GERMANY);
+		calendarProperty.set(Calendar.getInstance(localeProperty.get()));
 		
-		Calendar cal = Calendar.getInstance(Locale.GERMANY);
-		Date date = cal.getTime();
+		Platform.runLater(new Runnable() {
+
+			@Override
+			public void run() {
+
+				cellDataList = CalendarUtil.populateCalendar(CalendarUtil.getFirstCalendarDay(calendarProperty.get()));
+				
+				calendarTableView.setItems(cellDataList);
+				
+				moTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("monday"));
+				tuTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("tuesday"));
+				weTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("wednesday"));
+				thTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("thursday"));
+				frTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("friday"));
+				saTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("saturday"));
+				suTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("sunday"));
+				
+			}
+			
+			
+		});
+		
 		
 	}
 

@@ -40,8 +40,9 @@
 }
 
 .button:hover {
-    /*-fx-background-color: #3a3a3a;*/
-    -fx-border-color: rgb(95,171,233);
+    /*-fx-background-color: #3a3a3a;
+    -fx-border-color: rgb(95,171,233);*/
+    -fx-border-width: 4;
 }
 
 .button:pressed, .button:default:hover:pressed {
@@ -128,7 +129,7 @@
 }
 
 .menu-bar {
-	-fx-background-color:#e2e2e2;
+	-fx-background-color:rgb(95,171,233);
 	-fx-border-color: white;
 	-fx-border-width: 0,0,2,0;
 	
