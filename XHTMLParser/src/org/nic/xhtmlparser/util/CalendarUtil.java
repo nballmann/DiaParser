@@ -9,14 +9,17 @@ import org.nic.xhtmlparser.model.WeekCellData;
 
 public class CalendarUtil {
 	
-	public static Calendar getFirstCalendarDay(final Calendar cal) {
+	private static int actualMonth; // TODO implement method to compare dayEntrys to actualMonth
+	
+	public static Calendar getFirstCalendarDay(Calendar refCal) {
+		
+		Calendar cal = (Calendar)refCal.clone();
 		
 		int actualDay = cal.get(Calendar.DAY_OF_MONTH);
 		
 		cal.add(Calendar.DATE, -actualDay+1);
-		System.out.println(cal.get(Calendar.DATE));
-		cal.add(Calendar.DATE, -(Calendar.DAY_OF_WEEK-4));
-		System.out.println(cal.get(Calendar.DATE));
+		
+		actualMonth = cal.get(Calendar.MONTH);
 		
 		return cal;
 	}
@@ -25,24 +28,40 @@ public class CalendarUtil {
 		
 		ObservableList<WeekCellData> cellDataList = FXCollections.observableArrayList();
 		
-		for(int i = 0;i < 6; i++) {
+		if(cal.get(Calendar.DAY_OF_WEEK)==Calendar.MONDAY)
+			cal.add(Calendar.DATE, -7);
+		else if(cal.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)
+			cal.add(Calendar.DATE, -6);
+		else if(cal.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY)
+			cal.add(Calendar.DATE, -5);
+		else if(cal.get(Calendar.DAY_OF_WEEK)==Calendar.FRIDAY)
+			cal.add(Calendar.DATE, -4);
+		else if(cal.get(Calendar.DAY_OF_WEEK)==Calendar.THURSDAY)
+			cal.add(Calendar.DATE, -3);
+		else if(cal.get(Calendar.DAY_OF_WEEK)==Calendar.WEDNESDAY)
+			cal.add(Calendar.DATE, -2);
+		else if(cal.get(Calendar.DAY_OF_WEEK)==Calendar.TUESDAY)
+			cal.add(Calendar.DATE, -1);
+
+		
+		for(int i = 0; i < 6; i++) {
 			
 			WeekCellData tempData = new WeekCellData();
 			
 			tempData.setMonday(cal.get(Calendar.DATE));
-			cal.roll(Calendar.DATE, true);
+			cal.add(Calendar.DATE, 1);
 			tempData.setTuesday(cal.get(Calendar.DATE));
-			cal.roll(Calendar.DATE, true);
+			cal.add(Calendar.DATE, 1);
 			tempData.setWednesday(cal.get(Calendar.DATE));
-			cal.roll(Calendar.DATE, true);
+			cal.add(Calendar.DATE, 1);
 			tempData.setThursday(cal.get(Calendar.DATE));
-			cal.roll(Calendar.DATE, true);
+			cal.add(Calendar.DATE, 1);
 			tempData.setFriday(cal.get(Calendar.DATE));
-			cal.roll(Calendar.DATE, true);
+			cal.add(Calendar.DATE, 1);
 			tempData.setSaturday(cal.get(Calendar.DATE));
-			cal.roll(Calendar.DATE, true);
+			cal.add(Calendar.DATE, 1);
 			tempData.setSunday(cal.get(Calendar.DATE));
-			cal.roll(Calendar.DATE, true);
+			cal.add(Calendar.DATE, 1);
 			
 			cellDataList.add(tempData);
 		}

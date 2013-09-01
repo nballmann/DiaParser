@@ -35,7 +35,7 @@
           <children>
             <Label fx:id="monthAndYearLabel" alignment="CENTER" contentDisplay="CENTER" pickOnBounds="false" text="December, 2013" textAlignment="CENTER" textOverrun="ELLIPSIS" translateX="0.0" underline="false" wrapText="false">
               <labelFor>
-                <GridPane fx:id="calendarGridPane" alignment="TOP_CENTER" gridLinesVisible="false" VBox.vgrow="NEVER">
+                <GridPane fx:id="calendarGridPane" alignment="TOP_CENTER" gridLinesVisible="true" VBox.vgrow="NEVER">
                   <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -87,7 +87,7 @@
     </HBox>
     <VBox alignment="TOP_CENTER" prefHeight="450.0" prefWidth="400.0" styleClass="background">
       <children>
-        <GridPane fx:id="weekDayGridPane" alignment="TOP_CENTER" gridLinesVisible="false" padding="$x1" prefHeight="-1.0" VBox.vgrow="NEVER">
+        <GridPane fx:id="weekDayGridPane" alignment="TOP_CENTER" gridLinesVisible="true" padding="$x1" prefHeight="-1.0" VBox.vgrow="NEVER">
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

@@ -2,6 +2,10 @@ package org.nic.xhtmlparser.model;
 
 public class WeekCellData {
 	
+	
+	// TODO refactor fields into list
+	// TODO add boolean[] isDayOfActualMonth
+	
 	private Integer monday;
 	private Integer tuesday;
 	private Integer wednesday;
