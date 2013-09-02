@@ -24,78 +24,102 @@
  * 																								*
  ************************************************************************************************/	
 
-package org.nic.xhtmlparser.controller;
+package org.nic.xhtmlparser;
 
-import java.util.ArrayList;
+import static org.junit.Assert.*;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import org.nic.xhtmlparser.XHTMLParser;
-import org.nic.xhtmlparser.model.NewsFeed;
-import org.nic.xhtmlparser.util.ControllerInterface;
+import java.lang.reflect.Field;
 
-public class NewsFeedPaneController implements ControllerInterface {
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-	@SuppressWarnings("unused")
-	private XHTMLParser mainView;
+public class EveryXHTMLParserShould {
 	
-	@FXML private Label title1Text;
-	@FXML private Label teaser1Text;
-	@FXML private Label date1Text;
-	@FXML private Label title2Text;
-	@FXML private Label teaser2Text;
-	@FXML private Label date2Text;
-	@FXML private Label title3Text;
-	@FXML private Label teaser3Text;
-	@FXML private Label date3Text;
-	@FXML private Label title4Text;
-	@FXML private Label teaser4Text;
-	@FXML private Label date4Text;
-	
-	@FXML private VBox news1VBox;
-	@FXML private VBox news2VBox;
-	@FXML private VBox news3VBox;
-	@FXML private VBox news4VBox;
+	XHTMLParser xhtmlParser;
 	
 	
-	@Override
-	public void setMainView(XHTMLParser mainView) {
-
-		this.mainView = mainView;
+	@Before
+	public void init() {
+		
+		xhtmlParser = new XHTMLParser();
 		
 	}
 	
-	@FXML
-	public void initialize() {
+	@Test
+	public void LoadMainMenuController() {
 		
-	
-	}
-	
-	public void populateNewsFields(ArrayList<NewsFeed> newsFeeds) {
-		
-		if(newsFeeds!=null) {
+		Class<?> c = xhtmlParser.getClass();
+		Field mainMenuController;
+		try {
+			mainMenuController = c.getDeclaredField("mainMenuController");
+			mainMenuController.setAccessible(true);
 			
-			title1Text.setText(newsFeeds.get(0).getTitle());
-			date1Text.setText(newsFeeds.get(0).getDate());
-			teaser1Text.setText(newsFeeds.get(0).getDescription());
+			assertTrue(mainMenuController!=null);
+		} catch (NoSuchFieldException | SecurityException e) {
 
-			title2Text.setText(newsFeeds.get(1).getTitle());
-			date2Text.setText(newsFeeds.get(1).getDate());
-			teaser2Text.setText(newsFeeds.get(1).getDescription());
-
-			title3Text.setText(newsFeeds.get(2).getTitle());
-			date3Text.setText(newsFeeds.get(2).getDate());
-			teaser3Text.setText(newsFeeds.get(2).getDescription());
-
-			title4Text.setText(newsFeeds.get(3).getTitle());
-			date4Text.setText(newsFeeds.get(3).getDate());
-			teaser4Text.setText(newsFeeds.get(3).getDescription());
+			e.printStackTrace();
+		}
 		
+	}
+	
+	@Test
+	public void LoadMainViewController() {
+		
+		Class<?> c = xhtmlParser.getClass();
+		Field mainViewController;
+		try {
+			mainViewController = c.getDeclaredField("mainViewController");
+			mainViewController.setAccessible(true);
+			
+			assertTrue(mainViewController!=null);
+		} catch (NoSuchFieldException | SecurityException e) {
+
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	public void LoadNewsFeedController() {
+		
+		Class<?> c = xhtmlParser.getClass();
+		Field newsFeedController;
+		try {
+			newsFeedController = c.getDeclaredField("newsFeedController");
+			newsFeedController.setAccessible(true);
+			
+			assertTrue(newsFeedController!=null);
+		} catch (NoSuchFieldException | SecurityException e) {
+
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	public void LoadCalendarController() {
+		
+		Class<?> c = xhtmlParser.getClass();
+		Field calendarController;
+		try {
+			calendarController = c.getDeclaredField("calendarController");
+			calendarController.setAccessible(true);
+			
+			assertTrue(calendarController!=null);
+		} catch (NoSuchFieldException | SecurityException e) {
+
+			e.printStackTrace();
 		}
 		
 	}
 	
 	
+	@After
+	public void cleanUp() {
+		
+		xhtmlParser = null;
+		
+	}
 
 }
