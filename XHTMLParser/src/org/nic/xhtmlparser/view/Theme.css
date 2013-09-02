@@ -37,21 +37,37 @@
 .label {
     -fx-font-size: 16pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
+    -fx-text-fill: #f2f2f2;
     -fx-opacity: 0.6;
 }
 
+.label-dayofmonth {
+	
+	-fx-font-size: 16pt;
+    -fx-font-family: "Segoe UI Bold";
+    -fx-text-fill: #f2f2f2;
+    -fx-opacity: 1.0;	
+}
+
+.label-weekday-title {
+	
+	-fx-font-size: 18pt;
+    -fx-font-family: "Segoe UI Bold";
+    -fx-text-fill: #f2f2f2;
+    -fx-opacity: 1.0;	
+}
+
 .label-bright {
-    -fx-font-size: 11pt;
+    -fx-font-size: 16pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
+    -fx-text-fill: #f2f2f2;
     -fx-opacity: 1;
 }
 
 .label-header {
     -fx-font-size: 32pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
+    -fx-text-fill: #f2f2f2;
     -fx-opacity: 1;
 }
 

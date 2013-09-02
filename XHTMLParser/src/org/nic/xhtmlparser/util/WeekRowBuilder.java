@@ -37,9 +37,8 @@ public class WeekRowBuilder {
 	
 	private static final WeekRowBuilder INSTANCE = new WeekRowBuilder();
 	
-	public static final String[] WEEKDAYS_GER = {"MO", "TU", "WE", "TH", "FR", "SA", "SU"};
+	public static final String[] WEEKDAYS_GER = {"Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"};
 	public static final String[] WEEKDAYS_US = {"SU", "MO", "TU", "WE", "TH", "FR", "SA"};
-	
 	
 	private WeekRowBuilder() {
 		
@@ -62,13 +61,14 @@ public class WeekRowBuilder {
 			
 			weekRow = FXCollections.observableArrayList();
 			
-			weekRow.add(new CalendarDayEntryPane(wcd.getMonday().toString()));
-			weekRow.add(new CalendarDayEntryPane(wcd.getTuesday().toString()));
-			weekRow.add(new CalendarDayEntryPane(wcd.getWednesday().toString()));
-			weekRow.add(new CalendarDayEntryPane(wcd.getThursday().toString()));
-			weekRow.add(new CalendarDayEntryPane(wcd.getFriday().toString()));
-			weekRow.add(new CalendarDayEntryPane(wcd.getSaturday().toString()));
-			weekRow.add(new CalendarDayEntryPane(wcd.getSunday().toString()));
+			for(int i=0;i<7;i++) {
+				
+				weekRow.add(new CalendarDayEntryPane(
+						wcd.getWeekdays()[i].toString(), 
+						wcd.getIsDayOfActualMonth()[i], 
+						false));
+				
+			}
 			
 			weekRowsMap.put(("week" + count), weekRow);
 			
@@ -85,7 +85,7 @@ public class WeekRowBuilder {
 		
 		for(int i = 0; i < 7; i++) {
 			
-			titlePaneList[i] = new CalendarDayEntryPane(localStringList[i]); 
+			titlePaneList[i] = new CalendarDayEntryPane(localStringList[i], false, true); 
 			
 		}
 		

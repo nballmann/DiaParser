@@ -38,6 +38,17 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 
+/**
+ * class CalenderDayEntryPane extends {@link FlowPane}
+ * 
+ * represents a single day object pane for usage
+ * in the Calendar View  
+ * 
+ * 
+ * 
+ * @author N.Ballmann
+ *
+ */
 public class CalendarDayEntryPane extends FlowPane {
 	
 	private BooleanProperty isDayOfActualMonth;
@@ -54,11 +65,10 @@ public class CalendarDayEntryPane extends FlowPane {
 	public StringProperty entryValueProperty()	{ return entryValue; }
 	
 	
-	public CalendarDayEntryPane(final String day) {
+	public CalendarDayEntryPane(final String day, final boolean isDayOfMonth, final boolean isColumnTitle) {
 		
-		isDayOfActualMonth = new SimpleBooleanProperty(false);
+		isDayOfActualMonth = new SimpleBooleanProperty(isDayOfMonth);
 		entryValue = new SimpleStringProperty();
-		
 		
 		this.entryValue.set(day);
 		this.setAlignment(Pos.CENTER);
@@ -68,7 +78,15 @@ public class CalendarDayEntryPane extends FlowPane {
 		this.setPrefSize(49, 49);
 		
 		label = new Label();
-		label.setText(entryValue.get());
+		
+		if(isDayOfMonth)
+			label.getStyleClass().add("label-dayofmonth");
+		
+		if(isColumnTitle)
+			label.getStyleClass().add("label-weekday-title");
+			
+		
+		label.setText(entryValue.get());		
 		label.setAlignment(Pos.CENTER);
 		label.setContentDisplay(ContentDisplay.CENTER);
 		

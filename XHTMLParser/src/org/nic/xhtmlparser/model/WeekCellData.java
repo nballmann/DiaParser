@@ -29,88 +29,62 @@ package org.nic.xhtmlparser.model;
 public class WeekCellData {
 	
 	
-	// TODO refactor fields into list
 	// TODO add boolean[] isDayOfActualMonth
 	
-	private Integer monday;
-	private Integer tuesday;
-	private Integer wednesday;
-	private Integer thursday;
-	private Integer friday;
-	private Integer saturday;
-	private Integer sunday;
+	private Integer[] weekdays;
 
-	public Integer getMonday() {
-		return monday;
-	}
-
-	public void setMonday(Integer monday) {
-		this.monday = monday;
-	}
-
-	public Integer getTuesday() {
-		return tuesday;
-	}
-
-	public void setTuesday(Integer tuesday) {
-		this.tuesday = tuesday;
-	}
-
-	public Integer getWednesday() {
-		return wednesday;
-	}
-
-	public void setWednesday(Integer wednesday) {
-		this.wednesday = wednesday;
-	}
-
-	public Integer getThursday() {
-		return thursday;
-	}
-
-	public void setThursday(Integer thursday) {
-		this.thursday = thursday;
-	}
-
-	public Integer getFriday() {
-		return friday;
-	}
-
-	public void setFriday(Integer friday) {
-		this.friday = friday;
-	}
-
-	public Integer getSaturday() {
-		return saturday;
-	}
-
-	public void setSaturday(Integer saturday) {
-		this.saturday = saturday;
-	}
-
-	public Integer getSunday() {
-		return sunday;
-	}
-
-	public void setSunday(Integer sunday) {
-		this.sunday = sunday;
-	}
+	private boolean[] isDayOfActualMonth;
 	
-	public WeekCellData() {}
+	
+	/**
+	 * @return the weekdays
+	 */
+	public Integer[] getWeekdays() {
+		return weekdays;
+	}
 
-	public WeekCellData(Integer monday,Integer tuesday, Integer wednesday, 
-			Integer thursday, Integer friday, Integer saturday, Integer sunday) {
+	/**
+	 * @param weekdays the weekdays to set
+	 */
+	public void setWeekdays(Integer[] weekdays) {
+		this.weekdays = weekdays;
+	}
+
+	
+	/**
+	 * @return the isDayOfActualMonth
+	 */
+	public boolean[] getIsDayOfActualMonth() {
+		return isDayOfActualMonth;
+	}
+
+	/**
+	 * @param isDayOfActualMonth the isDayOfActualMonth to set
+	 */
+	public void setIsDayOfActualMonth(boolean[] isDayOfActualMonth) {
+		this.isDayOfActualMonth = isDayOfActualMonth;
+	}
+
+	public WeekCellData() {
 		
-		this.monday = monday;
-		this.tuesday = tuesday;
-		this.wednesday = wednesday;
-		this.thursday = thursday;
-		this.friday = friday;
-		this.saturday = saturday;
-		this.sunday = sunday;
+		weekdays =  new Integer[7];
+		isDayOfActualMonth = new boolean[7];
 		
 	}
 
+	public WeekCellData(Integer[] weekdays) {
+		
+		this();
+		this.weekdays = weekdays;
+		
+	}
+
+public WeekCellData(Integer[] weekdays, boolean[] isDayOfMonthArray) {
+		
+		this(weekdays);
+		this.isDayOfActualMonth = isDayOfMonthArray;
+		
+	}
 	
 
 }

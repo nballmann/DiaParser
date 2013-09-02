@@ -33,9 +33,18 @@ import javafx.collections.ObservableList;
 
 import org.nic.xhtmlparser.model.WeekCellData;
 
+
+/**
+ * 
+ * 
+ * 
+ * 
+ * @author N.Ballmann
+ *
+ */
 public class CalendarUtil {
 	
-	private static int actualMonth; // TODO implement method to compare dayEntrys to actualMonth
+	private static int actualMonth; 
 	
 	public static Calendar getFirstCalendarDay(Calendar refCal) {
 		
@@ -72,26 +81,23 @@ public class CalendarUtil {
 		
 		for(int i = 0; i < 6; i++) {
 			
-			WeekCellData tempData = new WeekCellData();
+			Integer[] weekDays = new Integer[7];
+			boolean[] isDayOfMonth = new boolean[7];
 			
-			tempData.setMonday(cal.get(Calendar.DATE));
-			cal.add(Calendar.DATE, 1);
-			tempData.setTuesday(cal.get(Calendar.DATE));
-			cal.add(Calendar.DATE, 1);
-			tempData.setWednesday(cal.get(Calendar.DATE));
-			cal.add(Calendar.DATE, 1);
-			tempData.setThursday(cal.get(Calendar.DATE));
-			cal.add(Calendar.DATE, 1);
-			tempData.setFriday(cal.get(Calendar.DATE));
-			cal.add(Calendar.DATE, 1);
-			tempData.setSaturday(cal.get(Calendar.DATE));
-			cal.add(Calendar.DATE, 1);
-			tempData.setSunday(cal.get(Calendar.DATE));
-			cal.add(Calendar.DATE, 1);
+			for(int j=0;j<7;j++) {
+				
+				weekDays[j] = cal.get(Calendar.DATE);
+				
+				if(cal.get(Calendar.MONTH) == actualMonth)
+					isDayOfMonth[j] = true;
+				
+				cal.add(Calendar.DATE, 1);
+				
+			}
 			
-			cellDataList.add(tempData);
+			cellDataList.add(new WeekCellData(weekDays, isDayOfMonth));
+			
 		}
-		
 		
 		return cellDataList;
 	}
