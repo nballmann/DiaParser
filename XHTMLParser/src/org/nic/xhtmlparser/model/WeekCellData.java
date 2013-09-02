@@ -1,83 +1,110 @@
 package org.nic.xhtmlparser.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class WeekCellData {
 	
-	private Integer monday;
-	private Integer tuesday;
-	private Integer wednesday;
-	private Integer thursday;
-	private Integer friday;
-	private Integer saturday;
-	private Integer sunday;
+	private IntegerProperty monday;
+	private IntegerProperty tuesday;
+	private IntegerProperty wednesday;
+	private IntegerProperty thursday;
+	private IntegerProperty friday;
+	private IntegerProperty saturday;
+	private IntegerProperty sunday;
 
 	public Integer getMonday() {
-		return monday;
+		return monday.get();
 	}
 
 	public void setMonday(Integer monday) {
-		this.monday = monday;
+		this.monday.set(monday);
 	}
+	
+	public IntegerProperty mondayProperty() { return monday; }
 
 	public Integer getTuesday() {
-		return tuesday;
+		return tuesday.get();
 	}
 
 	public void setTuesday(Integer tuesday) {
-		this.tuesday = tuesday;
+		this.tuesday.set(tuesday);
 	}
+	
+	public IntegerProperty tuesdayProperty() { return tuesday; }
 
 	public Integer getWednesday() {
-		return wednesday;
+		return wednesday.get();
 	}
 
 	public void setWednesday(Integer wednesday) {
-		this.wednesday = wednesday;
+		this.wednesday.set(wednesday);
 	}
+	
+	public IntegerProperty wednesdayProperty() { return wednesday; }
 
 	public Integer getThursday() {
-		return thursday;
+		return thursday.get();
 	}
 
 	public void setThursday(Integer thursday) {
-		this.thursday = thursday;
+		this.thursday.set(thursday);
 	}
+	
+	public IntegerProperty thursdayProperty() { return thursday; }
 
 	public Integer getFriday() {
-		return friday;
+		return friday.get();
 	}
 
 	public void setFriday(Integer friday) {
-		this.friday = friday;
+		this.friday.set(friday);
 	}
+	
+	public IntegerProperty fridayProperty() { return friday; }
 
 	public Integer getSaturday() {
-		return saturday;
+		return saturday.get();
 	}
 
 	public void setSaturday(Integer saturday) {
-		this.saturday = saturday;
+		this.saturday.set(saturday);
 	}
+	
+	public IntegerProperty saturdayProperty() { return saturday; }
 
 	public Integer getSunday() {
-		return sunday;
+		return sunday.get();
 	}
 
 	public void setSunday(Integer sunday) {
-		this.sunday = sunday;
+		this.sunday.set(sunday);
 	}
 	
-	public WeekCellData() {}
+	public IntegerProperty sundayProperty() { return sunday; }
+	
+	public WeekCellData() {
+		
+		monday = new SimpleIntegerProperty();
+		tuesday = new SimpleIntegerProperty();
+		wednesday = new SimpleIntegerProperty();
+		thursday = new SimpleIntegerProperty();
+		friday = new SimpleIntegerProperty();
+		saturday = new SimpleIntegerProperty();
+		sunday = new SimpleIntegerProperty();
+		
+	}
 
 	public WeekCellData(Integer monday,Integer tuesday, Integer wednesday, 
 			Integer thursday, Integer friday, Integer saturday, Integer sunday) {
-		
-		this.monday = monday;
-		this.tuesday = tuesday;
-		this.wednesday = wednesday;
-		this.thursday = thursday;
-		this.friday = friday;
-		this.saturday = saturday;
-		this.sunday = sunday;
+		this();
+		this.monday.set(monday);
+		this.tuesday.set(tuesday);
+		this.wednesday.set(wednesday);
+		this.thursday.set(thursday);
+		this.friday.set(friday);
+		this.saturday.set(saturday);
+		this.sunday.set(sunday);
 		
 	}
 

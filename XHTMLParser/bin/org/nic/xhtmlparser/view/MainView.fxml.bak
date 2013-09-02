@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="626.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml" fx:controller="org.nic.xhtmlparser.controller.MainViewController">
+  <!-- TODO Add Nodes -->
+  <center>
+    <StackPane fx:id="mainStackPane" prefHeight="600.0" prefWidth="400.0" />
+  </center>
+  <top>
+    <MenuBar>
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Main Menu" />
+            <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </top>
+</BorderPane>

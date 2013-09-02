@@ -8,10 +8,12 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import org.nic.xhtmlparser.XHTMLParser;
 import org.nic.xhtmlparser.model.WeekCellData;
@@ -23,6 +25,7 @@ public class CalendarController implements ControllerInterface {
 	@SuppressWarnings("unused")
 	private XHTMLParser mainView;
 	
+	@SuppressWarnings("unused")
 	private enum WeekDays {
 		
 		MO, TU, WE, TH, FR, SA, SU
@@ -72,13 +75,31 @@ public class CalendarController implements ControllerInterface {
 				saTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("saturday"));
 				suTableColumn.setCellValueFactory(new PropertyValueFactory<WeekCellData, Integer>("sunday"));
 				
+			}		
+			
+		});
+			
+	}
+	
+	@FXML
+	public void initialize()
+	{
+		
+		calendarTableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent e) {
+				// TODO
+
+				e.get
+				
 			}
 			
 			
 		});
 		
-		
 	}
+	
 
 	@Override
 	public void setMainView(XHTMLParser mainView) {

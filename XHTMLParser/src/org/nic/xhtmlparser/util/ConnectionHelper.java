@@ -8,17 +8,17 @@ import java.util.Properties;
 
 public class ConnectionHelper {
 	
-//	private static final String PROXY_IP = "10.140.142.10";
-//	private static final String PROXY_PORT = "3128";
+	private static final String PROXY_IP = "10.140.142.10";
+	private static final String PROXY_PORT = "3128";
 	
 	public static final String PARSE_URL = "http://www.diabetes-typ1.net/";
 	
 	
 	private static void setSystemProperties() {
 		
-//		Properties systemProperties = System.getProperties();
-//		systemProperties.setProperty("http.proxyHost", PROXY_IP);
-//		systemProperties.setProperty("http.proxyPort", PROXY_PORT);	
+		Properties systemProperties = System.getProperties();
+		systemProperties.setProperty("http.proxyHost", PROXY_IP);
+		systemProperties.setProperty("http.proxyPort", PROXY_PORT);	
 		
 	}
 	

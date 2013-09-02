@@ -14,9 +14,7 @@ public class CalendarUtil {
 		int actualDay = cal.get(Calendar.DAY_OF_MONTH);
 		
 		cal.add(Calendar.DATE, -actualDay+1);
-		System.out.println(cal.get(Calendar.DATE));
 		cal.add(Calendar.DATE, -(Calendar.DAY_OF_WEEK-4));
-		System.out.println(cal.get(Calendar.DATE));
 		
 		return cal;
 	}
