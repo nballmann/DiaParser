@@ -70,6 +70,22 @@ public class CalendarController implements ControllerInterface {
 	
 	private static final HashMap<Integer, String> MONTHS = new HashMap<>();
 	
+	private static CalendarDayEntryPane actualDayPane;
+	
+	/**
+	 * @return the actualDayPane
+	 */
+	public static CalendarDayEntryPane getActualDayPane() {
+		return actualDayPane;
+	}
+
+	/**
+	 * @param actualDayPane the actualDayPane to set
+	 */
+	public static void setActualDayPane(CalendarDayEntryPane actualDayPane) {
+		CalendarController.actualDayPane = actualDayPane;
+	}
+
 	@Override
 	public void setMainView(XHTMLParser mainView) {
 
@@ -178,7 +194,7 @@ public class CalendarController implements ControllerInterface {
 		
 	}
 	
-	@FXML public void handleLastMonth() {
+	@FXML private void handleLastMonth() {
 
 		getCalendar().add(Calendar.MONTH, -1);
 		actualMonth.set(calendar.get().get(Calendar.MONTH));
@@ -188,7 +204,7 @@ public class CalendarController implements ControllerInterface {
 		System.out.println("clicked" + calendar.get().get(Calendar.MONTH));
 	}
 
-	@FXML public void handleNextMonth() {
+	@FXML private void handleNextMonth() {
 
 		getCalendar().add(Calendar.MONTH, 1);
 		actualYear.set(calendar.get().get(Calendar.YEAR));

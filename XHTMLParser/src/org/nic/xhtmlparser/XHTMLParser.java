@@ -26,7 +26,6 @@
 
 package org.nic.xhtmlparser;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -219,7 +218,7 @@ public class XHTMLParser extends Application {
 			
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 	}

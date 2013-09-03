@@ -35,17 +35,22 @@ import org.nic.xhtmlparser.model.WeekCellData;
 
 
 /**
- * 
- * 
+ * <i>public final class CalendarUtil</i>
  * 
  * 
  * @author N.Ballmann
  *
  */
-public class CalendarUtil {
+public final class CalendarUtil {
 	
 	private static int actualMonth; 
 	
+	/**
+	 * public static {@link Calendar} getFirstCalendarDay({@link Calendar} refCal)
+	 * 
+	 * @param refCal actual Calendar instance
+	 * @return Calendar object representing the first day of the actual month
+	 */
 	public static Calendar getFirstCalendarDay(Calendar refCal) {
 		
 		Calendar cal = (Calendar)refCal.clone();
@@ -59,6 +64,13 @@ public class CalendarUtil {
 		return cal;
 	}
 	
+	/**
+	 * <i>{@literal public static {@link ObservableList}<{@link WeekCellData}> 
+	 * populateCalendar({@link Calendar} cal)</i>
+	 * 
+	 * @param cal actual Calendar instance
+	 * @return ObservableList of WeekCellData objects
+	 */
 	public static ObservableList<WeekCellData> populateCalendar(Calendar cal) {
 		
 		ObservableList<WeekCellData> cellDataList = FXCollections.observableArrayList();

@@ -26,6 +26,8 @@
 
 package org.nic.xhtmlparser.model;
 
+import org.nic.xhtmlparser.controller.CalendarController;
+
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -44,8 +46,6 @@ import javafx.scene.layout.FlowPane;
  * represents a single day object pane for usage
  * in the Calendar View  
  * 
- * 
- * 
  * @author N.Ballmann
  *
  */
@@ -53,6 +53,8 @@ public class CalendarDayEntryPane extends FlowPane {
 	
 	private BooleanProperty isDayOfActualMonth;
 	private StringProperty entryValue;
+	
+	private boolean actualDate = false;
 	
 	private Label label;
 		
@@ -64,7 +66,14 @@ public class CalendarDayEntryPane extends FlowPane {
 	public void setEntryValue(final String value)	{ entryValue.set(value); }
 	public StringProperty entryValueProperty()	{ return entryValue; }
 	
-	
+	/**
+	 * <i>CalendarDayEntrypane</i> constructor
+	 * 
+	 * @param day the numerical expression of the corresponding day in the calendar view
+	 * @param isDayOfMonth true if day is a day of the actual month 
+	 * @param isColumnTitle true if pane does represent a column title (week day string) 
+	 * 		  and not a day of the month
+	 */
 	public CalendarDayEntryPane(final String day, final boolean isDayOfMonth, final boolean isColumnTitle) {
 		
 		isDayOfActualMonth = new SimpleBooleanProperty(isDayOfMonth);
@@ -85,12 +94,34 @@ public class CalendarDayEntryPane extends FlowPane {
 		if(isColumnTitle)
 			label.getStyleClass().add("label-weekday-title");
 			
-		
 		label.setText(entryValue.get());		
 		label.setAlignment(Pos.CENTER);
 		label.setContentDisplay(ContentDisplay.CENTER);
 		
 		this.getChildren().add(label);
+		
+	}
+	
+	/**
+	 * event method set by {@link WeekCellData} fired by mouse click
+	 * 
+	 * @param lastPane the last activated pane
+	 */
+	public void changeStatus(CalendarDayEntryPane lastPane)
+	{
+		actualDate = !actualDate;
+		
+		if(lastPane!=null)
+			lastPane.changeStatus(null);
+
+		if (actualDate) {
+			this.getStyleClass().add("background-dark");
+		} else {
+			this.getStyleClass().clear();
+			this.getStyleClass().add("background");
+		}
+		
+		CalendarController.setActualDayPane(this);
 		
 	}
 	

@@ -26,10 +26,18 @@
 
 package org.nic.xhtmlparser.model;
 
+
+/**
+ * <i>public class WeekCellData</i><br>
+ * <br>
+ * A container for a week object to be put into a calendar view
+ * ranging from monday to sunday
+ * 
+ * @author N.Ballmann
+ *
+ */
 public class WeekCellData {
 	
-	
-	// TODO add boolean[] isDayOfActualMonth
 	
 	private Integer[] weekdays;
 
@@ -49,7 +57,6 @@ public class WeekCellData {
 	public void setWeekdays(Integer[] weekdays) {
 		this.weekdays = weekdays;
 	}
-
 	
 	/**
 	 * @return the isDayOfActualMonth
@@ -79,7 +86,7 @@ public class WeekCellData {
 		
 	}
 
-public WeekCellData(Integer[] weekdays, boolean[] isDayOfMonthArray) {
+	public WeekCellData(Integer[] weekdays, boolean[] isDayOfMonthArray) {
 		
 		this(weekdays);
 		this.isDayOfActualMonth = isDayOfMonthArray;

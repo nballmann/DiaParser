@@ -26,6 +26,18 @@
 
 package org.nic.xhtmlparser.model;
 
+/**
+ * <i>public class NewsFeed</i>
+ * <br><br>
+ * represents a single NewsFeed object with fields:<br>
+ * <i>title</i><br>
+ * <i>url</i><br>
+ * <i>date</i><br>
+ * <i>description</i>
+ * 
+ * @author N.Ballmann
+ *
+ */
 public class NewsFeed {
 	
 	private String title;

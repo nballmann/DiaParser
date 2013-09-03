@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-background-color 0xdfdfdfff?>
+
+<AnchorPane prefHeight="600.0" prefWidth="400.0" styleClass="background-dark" xmlns:fx="http://javafx.com/fxml" fx:controller="org.nic.xhtmlparser.controller.NewsFeedPaneController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <VBox id="VBox" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Pane maxWidth="400.0" prefHeight="150.0" prefWidth="400.0" styleClass="background" VBox.vgrow="NEVER">
+          <children>
+            <VBox id="VBox" fx:id="feed1VBox" alignment="TOP_LEFT" fillWidth="true" layoutX="0.0" layoutY="0.0" maxHeight="143.99997792968497" maxWidth="390.0" prefHeight="143.99997792968497" prefWidth="390.0" spacing="5.0">
+              <children>
+                <Label fx:id="title1Text" styleClass="text-custom-title" text="" textAlignment="LEFT" wrapText="true">
+                  <effect>
+                    <DropShadow spread="0.9" fx:id="x7">
+                      <input>
+                        <Glow />
+                      </input>
+                    </DropShadow>
+                  </effect>
+                </Label>
+                <Label fx:id="date1Text" styleClass="text-custom-link" text="" textAlignment="LEFT" wrapText="true">
+                  <effect>
+                    <Glow />
+                  </effect>
+                  <stylesheets>
+                    <URL value="@local_caspian.css" />
+                  </stylesheets>
+                </Label>
+                <Label fx:id="teaser1Text" effect="$x7" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true" />
+              </children>
+              <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" fx:id="x3" />
+              </padding>
+            </VBox>
+          </children>
+          <padding>
+            <Insets fx:id="x1" />
+          </padding>
+          <VBox.margin>
+            <Insets left="5.0" right="5.0" top="5.0" />
+          </VBox.margin>
+        </Pane>
+        <Pane maxWidth="400.0" prefHeight="150.0" prefWidth="400.0" styleClass="background" VBox.vgrow="NEVER">
+          <children>
+            <VBox id="VBox" fx:id="feed2VBox" alignment="TOP_LEFT" layoutX="0.0" layoutY="0.0" maxHeight="362.0" maxWidth="390.0" padding="$x3" prefHeight="144.0" prefWidth="390.0" spacing="5.0">
+              <children>
+                <Label fx:id="title2Text" styleClass="text-custom-title" text="" textAlignment="LEFT" wrapText="true">
+                  <effect>
+                    <DropShadow spread="0.9" fx:id="x8">
+                      <input>
+                        <Glow />
+                      </input>
+                    </DropShadow>
+                  </effect>
+                </Label>
+                <Label id="link2Text" fx:id="date2Text" styleClass="text-custom-teaser" text="" textAlignment="LEFT" wrapText="true">
+                  <effect>
+                    <Glow />
+                  </effect>
+                </Label>
+                <Label fx:id="teaser2Text" effect="$x8" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true" />
+              </children>
+            </VBox>
+          </children>
+          <padding>
+            <Insets bottom="5.0" fx:id="x4" />
+          </padding>
+          <VBox.margin>
+            <Insets left="5.0" right="5.0" fx:id="x2" />
+          </VBox.margin>
+        </Pane>
+        <Pane maxWidth="400.0" padding="$x4" prefHeight="150.0" prefWidth="400.0" styleClass="background" VBox.margin="$x2" VBox.vgrow="NEVER">
+          <children>
+            <VBox id="VBox" fx:id="feed3VBox" alignment="TOP_LEFT" layoutX="0.0" layoutY="0.0" maxHeight="144.0" maxWidth="390.0" padding="$x3" prefHeight="144.0" prefWidth="390.0" spacing="5.0">
+              <children>
+                <Label fx:id="title3Text" styleClass="text-custom-title" text="" textAlignment="LEFT" wrapText="true">
+                  <effect>
+                    <DropShadow spread="0.9" fx:id="x5">
+                      <input>
+                        <Glow />
+                      </input>
+                    </DropShadow>
+                  </effect>
+                </Label>
+                <Label id="link3Text" fx:id="date3Text" styleClass="text-custom-teaser" text="" textAlignment="LEFT" wrapText="true">
+                  <effect>
+                    <Glow />
+                  </effect>
+                </Label>
+                <Label fx:id="teaser3Text" effect="$x5" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true" />
+              </children>
+            </VBox>
+          </children>
+        </Pane>
+        <Pane maxWidth="400.0" padding="$x4" prefHeight="150.0" prefWidth="400.0" styleClass="background" VBox.vgrow="NEVER">
+          <children>
+            <VBox id="VBox" fx:id="feed4VBox" alignment="TOP_LEFT" layoutX="0.0" layoutY="0.0" maxHeight="144.0" maxWidth="390.0" padding="$x3" prefHeight="144.0" prefWidth="390.0" spacing="5.0">
+              <children>
+                <Label fx:id="title4Text" styleClass="text-custom-title" text="" textAlignment="LEFT" wrapText="true">
+                  <effect>
+                    <DropShadow spread="0.9" fx:id="x6">
+                      <input>
+                        <Glow />
+                      </input>
+                    </DropShadow>
+                  </effect>
+                </Label>
+                <Label id="link4Text" fx:id="date4Text" styleClass="text-custom-teaser" text="" textAlignment="LEFT" wrapText="true">
+                  <effect>
+                    <Glow />
+                  </effect>
+                </Label>
+                <Label fx:id="teaser4Text" effect="$x6" styleClass="text-custom-teaser" text="" textAlignment="JUSTIFY" wrapText="true" />
+              </children>
+            </VBox>
+          </children>
+          <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+          </VBox.margin>
+        </Pane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@Theme.css" />
+  </stylesheets>
+</AnchorPane>
