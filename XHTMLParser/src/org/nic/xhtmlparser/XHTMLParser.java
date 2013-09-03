@@ -111,7 +111,7 @@ public class XHTMLParser extends Application {
 			initNewEntryPane();
 			initNewsFeedPane();
 			
-		} catch (IOException e) {
+		} catch (Exception e) {
 			
 			e.printStackTrace();
 			
@@ -189,7 +189,7 @@ public class XHTMLParser extends Application {
 
 			mainViewController.addScreen("NewsPane", aPane);
 			
-		} catch (IOException e) {
+		} catch (Exception e) {
 			
 			e.printStackTrace();
 			
