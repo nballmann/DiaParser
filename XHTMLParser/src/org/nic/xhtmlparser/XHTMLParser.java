@@ -141,11 +141,10 @@ public class XHTMLParser extends Application {
 			mainViewController.addScreen("MainMenu", fPane);
 			mainViewController.setScreen(fPane);
 			
+
 		} catch (Exception e) {
 
-			e.printStackTrace();
-			
-		}
+		} 
 		
 	}
 	
