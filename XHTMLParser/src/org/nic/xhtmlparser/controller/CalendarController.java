@@ -45,6 +45,7 @@ import javafx.scene.layout.GridPane;
 
 import org.nic.xhtmlparser.XHTMLParser;
 import org.nic.xhtmlparser.model.CalendarDayEntryPane;
+import org.nic.xhtmlparser.model.WeekCellData;
 import org.nic.xhtmlparser.util.CalendarUtil;
 import org.nic.xhtmlparser.util.ControllerInterface;
 import org.nic.xhtmlparser.util.WeekRowBuilder;
@@ -70,20 +71,20 @@ public class CalendarController implements ControllerInterface {
 	
 	private static final HashMap<Integer, String> MONTHS = new HashMap<>();
 	
-	private static CalendarDayEntryPane actualDayPane;
+	private CalendarDayEntryPane actualDayPane;
 	
 	/**
 	 * @return the actualDayPane
 	 */
-	public static CalendarDayEntryPane getActualDayPane() {
+	public CalendarDayEntryPane getActualDayPane() {
 		return actualDayPane;
 	}
 
 	/**
 	 * @param actualDayPane the actualDayPane to set
 	 */
-	public static void setActualDayPane(CalendarDayEntryPane actualDayPane) {
-		CalendarController.actualDayPane = actualDayPane;
+	public void setActualDayPane(CalendarDayEntryPane actualDayPane) {
+		this.actualDayPane = actualDayPane;
 	}
 
 	@Override
@@ -123,7 +124,36 @@ public class CalendarController implements ControllerInterface {
 		actualYear = new SimpleIntegerProperty(calendar.get().get(Calendar.YEAR));
 		actualMonth = new SimpleIntegerProperty(getCalendar().get(Calendar.MONTH));
 		
-		wrb = WeekRowBuilder.getInstance();
+		calendar.addListener(new ChangeListener<Calendar>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Calendar> observable,
+					Calendar oldValue, Calendar newValue) {
+
+				System.out.println("fired");
+				
+				if(oldValue.get(Calendar.MONTH)!=newValue.get(Calendar.MONTH)) {
+					
+					actualMonth.set(newValue.get(Calendar.MONTH));
+					
+					System.out.println("fired 1");
+
+					if(oldValue.get(Calendar.YEAR)!=newValue.get(Calendar.YEAR)) {
+
+						actualYear.set(newValue.get(Calendar.YEAR));
+
+						System.out.println("fired 2");
+					}
+					
+					monthAndYearLabel.setText(MONTHS.get(actualMonth.get()) + ", " + actualYear.get());
+					
+				}
+
+			}
+			
+		});
+		
+		wrb = new WeekRowBuilder(this);
 		
 		Platform.runLater(new Runnable() {
 
@@ -140,8 +170,9 @@ public class CalendarController implements ControllerInterface {
 					public void changed(ObservableValue<? extends Number> observable,
 							Number oldValue, Number newValue) {
 						
-						monthAndYearLabel.setText(MONTHS.get(actualMonth.get()) + ", " + actualYear.get());
+						monthAndYearLabel.setText(MONTHS.get(newValue) + ", " + newValue);
 						
+						System.out.println("Jahr geändert " + newValue);
 					}
 					
 				});
@@ -150,30 +181,31 @@ public class CalendarController implements ControllerInterface {
 
 					@Override
 					public void changed(ObservableValue<? extends Number> arg0,
-							Number arg1, Number arg2) {
+							Number oldValue, Number newValue) {
 
-						monthAndYearLabel.setText(MONTHS.get(actualMonth.get()) + ", " + actualYear.get());
+						monthAndYearLabel.setText(MONTHS.get(newValue) + ", " + actualYear.get());
 						
+						System.out.println("Monat geändert " + newValue);
 					}
-					
+					 
 				});	
 				
 			}
 			
 		});
 		
-		generateActualCalendarView();
+		generateActualCalendarView(getCalendar());
 		
 	}
 	
-	private void generateActualCalendarView() {
+	private void generateActualCalendarView(final Calendar cal) {
 		
 		Platform.runLater(new Runnable() {
 
 			@Override
 			public void run() {
 
-				weekRowsMap = wrb.getWeekRows(CalendarUtil.populateCalendar(CalendarUtil.getFirstCalendarDay(getCalendar())));
+				weekRowsMap = wrb.getWeekRows(CalendarUtil.populateCalendar(CalendarUtil.getFirstCalendarDay(cal)));
 				
 				if(calendarGridPane.getChildrenUnmodifiable()!=null)
 					calendarGridPane.getChildren().clear();
@@ -194,23 +226,71 @@ public class CalendarController implements ControllerInterface {
 		
 	}
 	
+	/**
+	 * event method set by {@link WeekCellData} fired by mouse click
+	 * 
+	 * @param clickedPane the clicked pane
+	 */
+	public void changeStatus(CalendarDayEntryPane clickedPane)
+	{
+		
+		clickedPane.setActualDate(!clickedPane.isActualDate());
+		
+		Calendar tempCal = (Calendar)getCalendar().clone();
+		tempCal.setTime(clickedPane.getDate());
+		
+		if(actualMonth.get() != tempCal.get(Calendar.MONTH)) {
+			
+			getCalendar().setTime(clickedPane.getDate());
+			actualYear.set(calendar.get().get(Calendar.YEAR));
+			actualMonth.set(calendar.get().get(Calendar.MONTH));
+			generateActualCalendarView(getCalendar());
+			
+		}
+		
+		if(actualDayPane != null && actualDayPane!=clickedPane)
+			changeStatus(actualDayPane);
+
+		if (clickedPane.isActualDate()) {
+			clickedPane.getStyleClass().add("background-dark");
+		} else {
+			clickedPane.getStyleClass().clear();
+			clickedPane.getStyleClass().add("background");
+		}
+		
+		actualDayPane = clickedPane;
+		calendar.get().setTime(clickedPane.getDate());
+		
+		
+		
+//		if(tempCal.get(Calendar.YEAR) != actualYear.get)
+			
+	}
+	
+	/**
+	 * FXML Eventhandler <i> hadleLastMonth </i>
+	 * 
+	 */
 	@FXML private void handleLastMonth() {
 
 		getCalendar().add(Calendar.MONTH, -1);
 		actualMonth.set(calendar.get().get(Calendar.MONTH));
 		actualYear.set(calendar.get().get(Calendar.YEAR));
-		generateActualCalendarView();
+		generateActualCalendarView(getCalendar());
 		
 		System.out.println("clicked" + calendar.get().get(Calendar.MONTH));
 	}
 
+	/**
+	 * FXML Eventhandler <i> hadleNextMonth </i>
+	 * 
+	 */
 	@FXML private void handleNextMonth() {
 
 		getCalendar().add(Calendar.MONTH, 1);
 		actualYear.set(calendar.get().get(Calendar.YEAR));
 		actualMonth.set(calendar.get().get(Calendar.MONTH));
-		generateActualCalendarView();
-		
+		generateActualCalendarView(getCalendar());
 		
 		System.out.println("clicked " + calendar.get().get(Calendar.MONTH));
 	}

@@ -27,6 +27,7 @@
 package org.nic.xhtmlparser.util;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -95,10 +96,14 @@ public final class CalendarUtil {
 			
 			Integer[] weekDays = new Integer[7];
 			boolean[] isDayOfMonth = new boolean[7];
+			Date[] dates = new Date[7];
 			
 			for(int j=0;j<7;j++) {
 				
 				weekDays[j] = cal.get(Calendar.DATE);
+				
+				Date date = cal.getTime();
+				dates[j] = date;
 				
 				if(cal.get(Calendar.MONTH) == actualMonth)
 					isDayOfMonth[j] = true;
@@ -107,7 +112,7 @@ public final class CalendarUtil {
 				
 			}
 			
-			cellDataList.add(new WeekCellData(weekDays, isDayOfMonth));
+			cellDataList.add(new WeekCellData(weekDays, isDayOfMonth, dates));
 			
 		}
 		

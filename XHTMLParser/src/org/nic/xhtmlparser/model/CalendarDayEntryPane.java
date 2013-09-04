@@ -26,10 +26,12 @@
 
 package org.nic.xhtmlparser.model;
 
-import org.nic.xhtmlparser.controller.CalendarController;
+import java.util.Date;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.HPos;
@@ -53,6 +55,7 @@ public class CalendarDayEntryPane extends FlowPane {
 	
 	private BooleanProperty isDayOfActualMonth;
 	private StringProperty entryValue;
+	private ObjectProperty<Date> date;
 	
 	private boolean actualDate = false;
 	
@@ -66,18 +69,35 @@ public class CalendarDayEntryPane extends FlowPane {
 	public void setEntryValue(final String value)	{ entryValue.set(value); }
 	public StringProperty entryValueProperty()	{ return entryValue; }
 	
+	public Date getDate()	{ return date.get(); }
+	public void setdate(final Date date) { this.date.set(date); }
+	public ObjectProperty<Date> dateProperty() { return date; }
+	
 	/**
-	 * <i>CalendarDayEntrypane</i> constructor
+	 * @return the actualDate
+	 */
+	public boolean isActualDate() {
+		return actualDate;
+	}
+	/**
+	 * @param actualDate the actualDate to set
+	 */
+	public void setActualDate(boolean actualDate) {
+		this.actualDate = actualDate;
+	}
+	/**
+	 * <i>CalendarDayEntryPane</i> constructor
 	 * 
 	 * @param day the numerical expression of the corresponding day in the calendar view
 	 * @param isDayOfMonth true if day is a day of the actual month 
 	 * @param isColumnTitle true if pane does represent a column title (week day string) 
 	 * 		  and not a day of the month
 	 */
-	public CalendarDayEntryPane(final String day, final boolean isDayOfMonth, final boolean isColumnTitle) {
+	public CalendarDayEntryPane(final String day, final Date date, final boolean isDayOfMonth, final boolean isColumnTitle) {
 		
 		isDayOfActualMonth = new SimpleBooleanProperty(isDayOfMonth);
 		entryValue = new SimpleStringProperty();
+		this.date = new SimpleObjectProperty<Date>(date);
 		
 		this.entryValue.set(day);
 		this.setAlignment(Pos.CENTER);
@@ -102,30 +122,4 @@ public class CalendarDayEntryPane extends FlowPane {
 		
 	}
 	
-	/**
-	 * event method set by {@link WeekCellData} fired by mouse click
-	 * 
-	 * @param lastPane the last activated pane
-	 */
-	public void changeStatus(CalendarDayEntryPane lastPane)
-	{
-		actualDate = !actualDate;
-		
-		if(lastPane!=null)
-			lastPane.changeStatus(null);
-
-		if (actualDate) {
-			this.getStyleClass().add("background-dark");
-		} else {
-			this.getStyleClass().clear();
-			this.getStyleClass().add("background");
-		}
-		
-		CalendarController.setActualDayPane(this);
-		
-	}
-	
-	
-	
-
 }

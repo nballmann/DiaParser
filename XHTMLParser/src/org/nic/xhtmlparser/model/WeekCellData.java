@@ -26,6 +26,8 @@
 
 package org.nic.xhtmlparser.model;
 
+import java.util.Date;
+
 
 /**
  * <i>public class WeekCellData</i><br>
@@ -43,6 +45,7 @@ public class WeekCellData {
 
 	private boolean[] isDayOfActualMonth;
 	
+	private Date[] dates;
 	
 	/**
 	 * @return the weekdays
@@ -72,6 +75,20 @@ public class WeekCellData {
 		this.isDayOfActualMonth = isDayOfActualMonth;
 	}
 
+	/**
+	 * @return the dates
+	 */
+	public Date[] getDates() {
+		return dates;
+	}
+
+	/**
+	 * @param dates the dates to set
+	 */
+	public void setDates(Date[] dates) {
+		this.dates = dates;
+	}
+
 	public WeekCellData() {
 		
 		weekdays =  new Integer[7];
@@ -86,11 +103,11 @@ public class WeekCellData {
 		
 	}
 
-	public WeekCellData(Integer[] weekdays, boolean[] isDayOfMonthArray) {
+	public WeekCellData(Integer[] weekdays, boolean[] isDayOfMonthArray, Date[] dates) {
 		
 		this(weekdays);
 		this.isDayOfActualMonth = isDayOfMonthArray;
-		
+		this.dates = dates;
 	}
 	
 

@@ -48,23 +48,17 @@ import org.nic.xhtmlparser.model.WeekCellData;
  */
 public class WeekRowBuilder {
 	
-	private static final WeekRowBuilder INSTANCE = new WeekRowBuilder();
-	
 	public static final String[] WEEKDAYS_GER = {"Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"};
 	public static final String[] WEEKDAYS_US = {"SU", "MO", "TU", "WE", "TH", "FR", "SA"};
 	
-	private WeekRowBuilder() {
+	private CalendarController controller;
+	
+	public WeekRowBuilder(CalendarController controller) {
+		
+		this.controller = controller;
 		
 	}
 	
-	/**
-	 * @return the only instance of this class
-	 */
-	public static WeekRowBuilder getInstance() {
-		
-		return INSTANCE;
-		
-	}
 	
 	/**
 	 * 
@@ -87,6 +81,7 @@ public class WeekRowBuilder {
 				
 				weekRow.add(new CalendarDayEntryPane(
 						wcd.getWeekdays()[i].toString(), 
+						wcd.getDates()[i],
 						wcd.getIsDayOfActualMonth()[i], 
 						false));
 				
@@ -99,8 +94,8 @@ public class WeekRowBuilder {
 					@Override
 					public void handle(MouseEvent event) {
 
-						ePane.changeStatus(CalendarController.getActualDayPane());
-						
+						controller.changeStatus(ePane);
+			
 					}
 					
 				});
@@ -122,7 +117,7 @@ public class WeekRowBuilder {
 		
 		for(int i = 0; i < 7; i++) {
 			
-			titlePaneList[i] = new CalendarDayEntryPane(localStringList[i], false, true); 
+			titlePaneList[i] = new CalendarDayEntryPane(localStringList[i], null, false, true); 
 
 		}
 		
